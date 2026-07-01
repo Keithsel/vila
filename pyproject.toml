@@ -1,0 +1,26 @@
+[project]
+name = "vila"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=1.5",
+    "torchvision>=0.6.0",
+    "pandas",
+    "pysbd",
+    "layoutparser[effdet]>=0.2",
+    "transformers<5",
+    "datasets",
+    "pdfplumber",
+    "pdf2image",
+    "tqdm",
+    "scikit-learn",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
