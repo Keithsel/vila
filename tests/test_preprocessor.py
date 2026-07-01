@@ -1,5 +1,5 @@
 import pysbd
-from datasets import ClassLabel, load_dataset, load_metric
+from datasets import ClassLabel, load_dataset
 
 from transformers import AutoTokenizer
 

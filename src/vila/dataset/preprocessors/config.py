@@ -22,7 +22,10 @@ class VILAPreprocessorConfig:
     @classmethod
     def from_pretrained(cls, model_path: str, **kwargs):
         
-        config = AutoConfig.from_pretrained(model_path)
+        try:
+            config = AutoConfig.from_pretrained(model_path, local_files_only=True)
+        except Exception:
+            config = AutoConfig.from_pretrained(model_path)
 
         if hasattr(config, "vila_preprocessor_config"):
             data_json = config.vila_preprocessor_config.copy()

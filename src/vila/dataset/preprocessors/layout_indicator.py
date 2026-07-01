@@ -21,7 +21,7 @@ def split_token_based_on_sentences_boundary(words: List[str]) -> List[Tuple[int,
         return [(0, 0)]
     combined_words = " ".join(words)
 
-    char2token_mask = np.zeros(len(combined_words), dtype=np.int)
+    char2token_mask = np.zeros(len(combined_words), dtype=int)
 
     acc_word_len = 0
     for idx, word in enumerate(words):

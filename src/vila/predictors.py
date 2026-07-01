@@ -137,8 +137,15 @@ class BasePDFPredictor:
         cls, model_path, preprocessor=None, device=None, **preprocessor_config
     ):
 
-        model = AutoModelForTokenClassification.from_pretrained(model_path)
-        tokenizer = AutoTokenizer.from_pretrained(model_path)
+        try:
+            model = AutoModelForTokenClassification.from_pretrained(model_path, local_files_only=True)
+        except (IOError, ValueError, EnvironmentError):
+            model = AutoModelForTokenClassification.from_pretrained(model_path)
+
+        try:
+            tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+        except (IOError, ValueError, EnvironmentError):
+            tokenizer = AutoTokenizer.from_pretrained(model_path)
 
         if preprocessor is None:
             preprocessor_config = VILAPreprocessorConfig.from_pretrained(
